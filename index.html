@@ -103,7 +103,9 @@
     <script defer src="./fontawesome-free-5.10.2-web/js/solid.js"></script>
     <script defer src="./fontawesome-free-5.10.2-web/js/fontawesome.js"></script>
     <script> 
-	    $('#exp').text("Exp: "+(moment(new Date()).diff(moment('2015-10-15','YYYY-MM-DD'),'months',true)/12).toFixed(1)+" Years")
+	  var years = Math.floor(moment().diff(moment('2015-10-15','YYYY-MM-DD'),'months',true)/12);
+	  var months = Math.round(moment().diff(moment('2015-10-15','YYYY-MM-DD'),'months',true)%12);
+	  $('#exp').text("Exp: "+years+"."+months+" Years");
     </script>
   </body>
 </html>
