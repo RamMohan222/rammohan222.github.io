@@ -103,7 +103,7 @@
     <script defer src="./fontawesome-free-5.10.2-web/js/solid.js"></script>
     <script defer src="./fontawesome-free-5.10.2-web/js/fontawesome.js"></script>
     <script> 
-	  var totalMonths = moment().diff(moment('2015-10-15','YYYY-MM-DD'),'months',true);  
+	  var totalMonths = Math.round(moment().diff(moment('2015-10-15','YYYY-MM-DD'),'months',true));  
 	  var years = Math.floor(totalMonths/12);
 	  var months = Math.round(totalMonths%12);
 	  console.log('totalMonths:', totalMonths, 'years:',years,'months',months);  
