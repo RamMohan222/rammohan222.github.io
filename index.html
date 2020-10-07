@@ -103,8 +103,10 @@
     <script defer src="./fontawesome-free-5.10.2-web/js/solid.js"></script>
     <script defer src="./fontawesome-free-5.10.2-web/js/fontawesome.js"></script>
     <script> 
-	  var years = Math.floor(moment().diff(moment('2015-10-15','YYYY-MM-DD'),'months',true)/12);
-	  var months = Math.round(moment().diff(moment('2015-10-15','YYYY-MM-DD'),'months',true)%12);
+	  var totalMonths = moment().diff(moment('2015-10-15','YYYY-MM-DD'),'months',true);  
+	  var years = Math.floor(totalMonths/12);
+	  var months = Math.round(totalMonths%12);
+	  console.log('totalMonths:', totalMonths, 'years:',years,'months',months);  
 	  $('#exp').text("Exp: "+years+"."+months+" Years");
     </script>
   </body>
