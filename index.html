@@ -22,12 +22,29 @@
       display: inline-block;
       vertical-align: baseline;
     }
+    /* For mobile devices (up to 767px width) */
+    @media (max-width: 767px) {
+	   .center-image {
+			display:flex;
+			justify-content:center;
+			align-items:center;
+	   }
+	   .rounded-image {
+	      border-radius: 50%
+	   }
+     }
+
+	/* For desktop devices (768px width and above) */
+     @media (min-width: 768px) {
+	 /* CSS rules for desktop devices */
+	 
+     }
     </style>
   </head>
   <body>
     <div class="container">
         <div class="row">
-          <div class="col-sm-1">
+          <div class="col-sm-1 center-image">
             <img src="./assets/profile.jpg" class="rounded float-left" alt="..." height="100px">
           </div>
           <div class="col-sm-11" style="padding-top:5%">
