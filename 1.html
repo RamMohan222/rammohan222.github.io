@@ -60,7 +60,15 @@ body {
 }
 
 div {
-/*   border:1px solid #fff; */
+  border:1px solid #fff;
+}
+
+span {
+  border:1px solid red;
+}
+
+cite a {
+  text-decoration:none;
 }
 
 .container{
@@ -81,15 +89,28 @@ div {
    overflow:hidden;
 }
 .row_wrapper {
+  display:flex;
   text-align:center;
+  flex-direction:column;
 }
 .contact_info div {
    display:flex;
    justify-content:center;
 }
+
 .title {
   font-size:x-large;
   color:var(--title-color);
+}
+
+#exp {
+  font-size:small;
+  background-color:#0b0;
+  width: fit-content;
+  margin:auto;
+  padding:1px 5px 1px 5px;
+  border-radius:30px;
+  color:white;
 }
 
 @media only screen and (max-width: 767px) {
@@ -101,7 +122,7 @@ div {
      .row_wrapper {
         width:80vw;
         max-width:700px;
-        display:flex;
+        flex-direction:row;
         justify-content: space-between;
         border-bottom:2px solid #aaa;
     }
@@ -110,6 +131,12 @@ div {
       align-items:end;
       margin-bottom:-10px;
     }
+    .contact_info div {
+       justify-content:right;
+    }
+  #exp {
+    margin-right:0px;
+  }
 }
 </style>
 </head>
@@ -143,30 +170,44 @@ div {
               <i class="fab fa-github"></i>
            </a>
         </cite>
-	    <cite title="medium/rammohan222">
+          <cite title="medium/rammohan222">
            <a href="https://rammohan222.medium.com/" target="_blank">
               <i class="fab fa-medium"></i>
            </a>
         </cite>
-		<cite title="hashnode.com/@rammohan222">
+        <cite title="hashnode.com/@rammohan222">
            <a href="https://hashnode.com/@rammohan222" target="_blank">
               <i class="fas fa-stop-circle fa-rotate-90"></i>
            </a>
         </cite>
-		<cite title="GitHub/Profile">
+        <cite title="GitHub/Profile">
            <a href="https://ram222mohan.com/RamMohan222" target="_blank">
               <i class="fas fa-user-circle"></i>
            </a>
         </cite>
-		<cite title="Blog">
+        <cite title="Blog">
            <a href="https://blog.ram222mohan.com" target="_blank">
               <i class="fas fa-blog"></i>
            </a>
         </cite>        
        </span>
-       <span class="float-right"><strong>Working At: </strong><a href="https://www.valuelabs.com/" target="_blank">ValueLabs</a></span>
+       <span>
+         <strong>Working At: </strong><a href="https://www.valuelabs.com/" target="_blank">ValueLabs</a>
+         <div id="exp" class="inconsolata-contact-info"></div>
+      </span>
     </div>
   </div>
   
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.25.3/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script>
+     $( document ).ready(function() {
+       var totalMonths = Math.round(moment().diff(moment('2015-10-15','YYYY-MM-DD'),'months',true));  
+       var years = Math.floor(totalMonths/12);
+	   var months = Math.round(totalMonths%12);
+	   console.log('totalMonths:', totalMonths, 'years:',years,'months',months);  
+	   $('#exp').text("T.Exp: "+years+"."+months+" Years");
+     });
+  </script>
 </body>
 </html>
