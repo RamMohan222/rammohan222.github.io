@@ -64,6 +64,10 @@
       font-style: normal;
     }
 
+    .hidden {
+      opacity:0;
+    }
+
     .inconsolata-contact-info {
       font-family: "Inconsolata", monospace;
       font-optical-sizing: auto;
@@ -97,6 +101,10 @@
 			            -23px 0 20px -23px rgba(0, 0, 0, .8),
 			            23px 0 20px -23px rgba(0, 0, 0, .8),
 			            inset 0 0 40px rgba(0, 0, 0, .1);
+      width: 80vw;
+      max-width: 700px;
+      box-sizing: content-box;
+      margin: 10px auto;
     }
 
     .image_wrapper img {
@@ -157,7 +165,7 @@
       margin-top: 3px;
     }
 
-    .row .row_content {
+    .row_content {
       text-align: left;
       margin-left: 20px;
     }
@@ -219,12 +227,12 @@
 </head>
 
 <body>
-  <div class="container">
+  <main class="container">
     <div class="image_wrapper">
       <img src="https://ram222mohan.com/assets/profile.jpg" />
     </div>
-    <section class="row border_bottom fixedElement">
-      <div class="title kalam-bold">RamaMohanaRao.M</div>
+    <section class="row border_bottom">
+      <div class="title kalam-regular"><span id="console-text"></span><div class='console-underscore' id='console'>&#95;</div></div>
       <div class="contact_info inconsolata-contact-info">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#5f6368">
@@ -342,10 +350,12 @@
     <section class="row row_content kalam-regular border_bottom">
       <span>
         <div class="sub_title">Eduction:</div>
-        <small>Master of Computer Applications from JKC College, Guntur (Acharya Nagarjuna University) in 2014</small>
+        <ul>
+          <li><small>Master of Computer Applications from JKC College, Guntur (Acharya Nagarjuna University) in 2014</small></li>
+        </ul>
       </span>
     </section>
-  </div>
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/moment@2.25.3/moment.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -358,7 +368,57 @@
       var months = Math.round(totalMonths % 12);
       console.log('totalMonths:', totalMonths, 'years:', years, 'months', months);
       $('#exp').text("Total Exp: " + years + "." + months + " Years");
+
+      consoleText(['RamaMohanaRao. M'], 'console-text',['#333']);
     });
+
+    function consoleText(words, id, colors) {
+      if (colors === undefined) colors = ['#333'];
+      var visible = true;
+      var con = document.getElementById('console');
+      var letterCount = 1;
+      var x = 1;
+      var waiting = false;
+      var target = document.getElementById(id)
+      target.setAttribute('style', 'color:' + colors[0])
+      window.setInterval(function() {
+
+        if (letterCount === 0 && waiting === false) {
+          waiting = true;
+          target.innerHTML = words[0].substring(0, letterCount)
+          window.setTimeout(function() {
+            var usedColor = colors.shift();
+            colors.push(usedColor);
+            var usedWord = words.shift();
+            words.push(usedWord);
+            x = 1;
+            target.setAttribute('style', 'color:' + colors[0])
+            letterCount += x;
+            waiting = false;
+          }, 1000)
+        } else if (letterCount === words[0].length + 1 && waiting === false) {
+          waiting = true;
+          window.setTimeout(function() {
+            x = -1;
+            letterCount += x;
+            waiting = false;
+          }, 1000)
+        } else if (waiting === false) {
+          target.innerHTML = words[0].substring(0, letterCount)
+          letterCount += x;
+        }
+      }, 120)
+      window.setInterval(function() {
+        if (visible === true) {
+          con.className = 'console-underscore hidden'
+          visible = false;
+
+        } else {
+          con.className = 'console-underscore'
+          visible = true;
+        }
+      }, 400)
+    }
   </script>
   <link href="https://cdn.jsdelivr.net/gh/RamMohan222/web-widget-metrics-info@v1.0.8/output/index.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/gh/RamMohan222/web-widget-metrics-info@v1.0.8/output/index.js"></script>
