@@ -179,14 +179,18 @@
       text-decoration: underline;
     }
 
-    /*  mobile view */
+    .nav_menu {
+      position: inherit;
+    }
+
+    /*  mobile view styles */
     @media only screen and (max-width: 767px) {
       .row {
         margin-top: 10px;
       }
     }
 
-    /* desktop view */
+    /* desktop view styles */
     @media only screen and (min-width: 768px) {
 
       .row {
@@ -223,6 +227,23 @@
       #exp {
         margin-right: 0px;
       }
+
+      .sticky_row {
+        position: sticky;
+        position: -webkit-sticky;
+        position: -ms-sticky;
+        position: -o-sticky;
+        position: -moz-sticky;
+        top:0;
+      }
+      
+      .sticky_row.bgcolor {
+        background-color:var(--body-background);
+        box-shadow: 0px 2px 3px 3px rgba(0, 0, 0, .3);
+        box-sizing: content-box;
+        padding-left:20px;
+        padding-right: 20px;
+      }
     }
   </style>
 </head>
@@ -232,7 +253,7 @@
     <div class="image_wrapper">
       <img src="https://ram222mohan.com/assets/profile.jpg" />
     </div>
-    <section class="row border_bottom">
+    <section class="row border_bottom sticky_row">
       <div class="title kalam-regular"><span id="console-text"></span><span class='console-underscore' id='console'>&#95;</span></div>
       <div class="contact_info inconsolata-contact-info">
         <div>
@@ -268,7 +289,7 @@
             <i class="fab fa-medium"></i>
           </a>
         </cite>
-        <cite title="hashnode.com/@rammohan222">
+        <cite title="hashnode.com/@rammohan222" style="z-index: -1;">
           <a href="https://hashnode.com/@rammohan222" target="_blank">
             <i class="fas fa-stop-circle fa-rotate-90"></i>
           </a>
@@ -367,7 +388,7 @@
       console.log('totalMonths:', totalMonths, 'years:', years, 'months', months);
       $('#exp').text("Total Exp: " + years + "." + months + " Years");
 
-      consoleText(['RamaMohanaRao. M', 'RamMohan. M'], 'console-text',['#333']);
+      consoleText(['RamaMohanaRao. M', 'RamMohan. M', 'Ram. M'], 'console-text',['#333']);
     });
 
     function consoleText(words, id, colors) {
@@ -417,6 +438,21 @@
         }
       }, 400)
     }
+
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const stickyElement = document.querySelector('.sticky_row');
+
+        window.addEventListener('scroll', function() {
+            const rect = stickyElement.getBoundingClientRect();
+            if (rect.top <= 0) {
+                stickyElement.classList.add('bgcolor');
+            } else {
+                stickyElement.classList.remove('bgcolor');
+            }
+        });
+    });
   </script>
   <link href="https://cdn.jsdelivr.net/gh/RamMohan222/web-widget-metrics-info@v1.0.8/output/index.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/gh/RamMohan222/web-widget-metrics-info@v1.0.8/output/index.js"></script>
