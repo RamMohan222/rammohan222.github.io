@@ -92,6 +92,11 @@
       display: grid;
       justify-content: center;
       place-items: center;
+      padding:20px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .3),
+			            -23px 0 20px -23px rgba(0, 0, 0, .8),
+			            23px 0 20px -23px rgba(0, 0, 0, .8),
+			            inset 0 0 40px rgba(0, 0, 0, .1);
     }
 
     .image_wrapper img {
@@ -152,8 +157,7 @@
       margin-top: 3px;
     }
 
-    .skill,
-    .experience {
+    .row .row_content {
       text-align: left;
       margin-left: 20px;
     }
@@ -277,7 +281,7 @@
         <div id="exp" class="inconsolata-contact-info"></div>
       </span>
     </section>
-    <section class="row skill kalam-regular border_bottom">
+    <section class="row row_content kalam-regular border_bottom">
       <span>
         <div class="sub_title">Skills:</div>
         <ul>
@@ -300,7 +304,7 @@
       </span>
     </section>
 
-    <section class="row experience kalam-regular border_bottom">
+    <section class="row row_content kalam-regular border_bottom">
       <span>
         <div class="sub_title">Experience:</div>
         <ul>
@@ -332,6 +336,13 @@
             </li>
           </ul>
         </ul>
+      </span>
+    </section>
+
+    <section class="row row_content kalam-regular border_bottom">
+      <span>
+        <div class="sub_title">Eduction:</div>
+        <small>Master of Computer Applications from JKC College, Guntur (Acharya Nagarjuna University) in 2014</small>
       </span>
     </section>
   </div>
