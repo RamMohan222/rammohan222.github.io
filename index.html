@@ -183,6 +183,28 @@
       position: inherit;
     }
 
+    #downloadBtn {
+      margin-top: 20px;
+      padding: 5px 10px 5px 10px;
+      border-radius: 5px;      
+      border: 1px solid gray;
+
+      &:hover {
+        border: 1px solid #333;
+        background-color: #ccc;
+        color: #000;
+        box-shadow: 0px 0px 2px 2px #ddd;
+      }
+    }
+
+    .hide-in-pdf {
+        display: none !important; /* Hide the element in PDF */
+     }
+
+    .pdf-view {
+        margin-top: 0 !important; /* Reset top margin for PDF */
+     }
+
     /*  mobile view styles */
     @media only screen and (max-width: 767px) {
       .row {
@@ -243,6 +265,7 @@
         box-sizing: content-box;
         padding-left:20px;
         padding-right: 20px;
+        transition: box-shadow 0.3s;
       }
     }
   </style>
@@ -374,12 +397,15 @@
         </ul>
       </span>
     </section>
+    <button id="downloadBtn">Print</button>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/moment@2.25.3/moment.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
   <script>
     $(document).ready(function () {
       var totalMonths = Math.round(moment().diff(moment('2015-10-15', 'YYYY-MM-DD'), 'months', true));
@@ -442,15 +468,41 @@
 
 
     document.addEventListener("DOMContentLoaded", function() {
-        const stickyElement = document.querySelector('.sticky_row');
+        var stickyElement = document.querySelector('.sticky_row');
 
         window.addEventListener('scroll', function() {
-            const rect = stickyElement.getBoundingClientRect();
+            var rect = stickyElement.getBoundingClientRect();
             if (rect.top <= 0) {
                 stickyElement.classList.add('bgcolor');
             } else {
                 stickyElement.classList.remove('bgcolor');
             }
+        });
+    });
+
+    $('#downloadBtn').click(function() {
+        // Get the content to convert to PDF
+        var element = document.getElementsByClassName('container')[0];
+        
+        // Set the options for the PDF
+        var opt = {
+            margin:       0.5,
+            filename:     'RamaMohanaRao.M_Exp8.9_Fullstack_Java_React.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+        
+        $('.image_wrapper').addClass('hide-in-pdf').addClass('.pdf-view');
+        $('#downloadBtn').css({ 'display': 'none' });
+        $('.sticky_row').css({ 'background-color': 'transparent' });
+        $('#console-text').text('Rama Mohana Rao. Molabanti')
+        
+        // Generate the PDF
+        html2pdf().from(element).set(opt).save().then(function() {
+          $('.image_wrapper').removeClass('hide-in-pdf').removeClass('.pdf-view');
+          $('#downloadBtn').css({ 'display': 'initial' });
+          $('.sticky_row').css({ 'background-color': 'var(--body-background)' });
         });
     });
   </script>
