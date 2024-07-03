@@ -407,13 +407,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 
   <script>
-    $(document).ready(function () {
-      var totalMonths = Math.round(moment().diff(moment('2015-10-15', 'YYYY-MM-DD'), 'months', true));
-      var years = Math.floor(totalMonths / 12);
-      var months = Math.round(totalMonths % 12);
-      console.log('totalMonths:', totalMonths, 'years:', years, 'months', months);
-      $('#exp').text("Total Exp: " + years + "." + months + " Years");
+    function getExp() {
+        var totalMonths = Math.round(moment().diff(moment('2015-10-15', 'YYYY-MM-DD'), 'months', true));
+        var years = Math.floor(totalMonths / 12);
+        var months = Math.round(totalMonths % 12);
+        return { years, months }
+    }
 
+    $(document).ready(function () {
+      var exp = getExp();
+      console.log(exp);
+      $('#exp').text("Total Exp: " + exp.years + "." + exp.months + " Years");
       consoleText(['RamaMohanaRao. M', 'RamMohan. M', 'Ram. M'], 'console-text',['#333']);
     });
 
@@ -483,11 +487,11 @@
     $('#downloadBtn').click(function() {
         // Get the content to convert to PDF
         var element = document.getElementsByClassName('container')[0];
-        
+        var exp = getExp();
         // Set the options for the PDF
         var opt = {
             margin:       0.5,
-            filename:     'RamaMohanaRao.M_Exp8.9_Fullstack_Java_React.pdf',
+            filename:     'RamaMohanaRao.M_Exp'+exp.years+'.'+exp.months+'_Fullstack_Java_React.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2 },
             jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -496,7 +500,7 @@
         $('.image_wrapper').addClass('hide-in-pdf').addClass('.pdf-view');
         $('#downloadBtn').css({ 'display': 'none' });
         $('.sticky_row').css({ 'background-color': 'transparent' });
-        $('#console-text').text('Rama Mohana Rao. Molabanti')
+        $('#console-text').text('Rama Mohana Rao. Molabanti');
         
         // Generate the PDF
         html2pdf().from(element).set(opt).save().then(function() {
