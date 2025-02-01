@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection">
+
+   
+    <title>Software Rules & Principles</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <div>
+            <h5 class="center-align">Software Rules & Principles</h5>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Boy Scout Rule</span>
+                        <p>It's not enough to write the code well. The code has to be kept clean over time. We've all seen code rot and degrade as time passes. So we must take an active role in preventing this degradation.</p>
+                        <blockquote>
+                           <p>“Always leave the campground cleaner than you found it”</p> 
+                        </blockquote>
+                        <p>If we all checked-in our code a little cleaner than when we checked it out, the code simply could not rot. The cleanup doesn't have to be something big. Change one variable name for the better, break up one function that's a little too large, eliminate one small bit of duplication, clean up one composite if statement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Command-Query Separation</span>
+                        <p> Command-Query Separation (CQS) states that every method should either be a command that performs an action, or a query that returns data to the caller, but not both.</p>
+                        <blockquote>
+                            <p>A Command – Performs an action that modifies the system state but does not return a value.</p>
+                            <p>A Query – Retrieves data without causing any side effects or modifying the system state.</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Composition Over Inheritance</span>
+                        <p>Composition Over Inheritance is a design principle that encourages the use of composition (combining simple objects to create more complex ones) instead of inheritance (creating new classes by inheriting properties and methods from a parent class) for code reuse and extensibility. This principle promotes flexibility and loose coupling in software design.</p>
+                        <blockquote>
+                            <ol>
+                                <li>Increased flexibility: Composition allows you to change or replace components at runtime, whereas inheritance is static and can't be changed after the class is defined.</li>
+                                <li>Reduced complexity: Composition reduces the depth of the inheritance hierarchy, making the codebase easier to understand and maintain.</li>
+                                <li>Better separation of concerns: Composition encourages creating smaller, more focused classes and components that are responsible for specific tasks.</li>
+                                <li>Easy to test with mock objects</li>
+                            </ol>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
