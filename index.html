@@ -57,7 +57,7 @@
   <style>
     :root {
       --body-background: #eee;
-      --title-color: #333;
+      --title-color: #2c2a2a;
       --work-exp-background: #06ad06;
     }
 
@@ -88,8 +88,15 @@
       font-optical-sizing: auto;
       font-weight: 500;
       font-style: normal;
-      font-variation-settings:
-        "wdth" 87.5;
+      font-variation-settings: "width" 87.5;
+    }
+
+    .list-style {
+      list-style: circle;
+    }
+
+    .list-style-none {
+      list-style: none;
     }
 
     * {
@@ -192,6 +199,7 @@
       font-weight: bold;
       margin: 10px 0px 5px 0px;
       text-decoration: underline;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .nav_menu {
@@ -289,7 +297,7 @@
 <body>
   <main class="container">
     <div class="image_wrapper">
-      <img src="https://ram222mohan.com/assets/profile.jpg" />
+      <!-- <img src="https://ram222mohan.com/assets/profile.jpg" /> -->
     </div>
     <section class="row border_bottom sticky_row">
       <div class="title kalam-regular"><span id="console-text"></span><span class='console-underscore' id='console'>&#95;</span></div>
@@ -322,26 +330,28 @@
             <i class="fab fa-github"></i>
           </a>
         </cite>
-        <cite title="medium/rammohan222">
-          <a href="https://rammohan222.medium.com/" target="_blank">
-            <i class="fab fa-medium"></i>
-          </a>
-        </cite>
-        <cite title="hashnode.com/@rammohan222" style="z-index: -1;">
-          <a href="https://hashnode.com/@rammohan222" target="_blank">
-            <i class="fas fa-stop-circle fa-rotate-90"></i>
-          </a>
-        </cite>
-        <cite title="GitHub/Profile">
-          <a href="https://ram222mohan.com/RamMohan222" target="_blank">
-            <i class="fas fa-user-circle"></i>
-          </a>
-        </cite>
-        <cite title="Blog">
-          <a href="https://blog.ram222mohan.com" target="_blank">
-            <i class="fas fa-blog"></i>
-          </a>
-        </cite>
+        <!--
+          <cite title="medium/rammohan222">
+            <a href="https://rammohan222.medium.com/" target="_blank">
+              <i class="fab fa-medium"></i>
+            </a>
+          </cite>
+          <cite title="hashnode.com/@rammohan222" style="z-index: -1;">
+            <a href="https://hashnode.com/@rammohan222" target="_blank">
+              <i class="fas fa-stop-circle fa-rotate-90"></i>
+            </a>
+          </cite>
+          <cite title="GitHub/Profile">
+            <a href="https://ram222mohan.com/RamMohan222" target="_blank">
+              <i class="fas fa-user-circle"></i>
+            </a>
+          </cite>
+          <cite title="Blog">
+            <a href="https://blog.ram222mohan.com" target="_blank">
+              <i class="fas fa-blog"></i>
+            </a>
+          </cite>
+          -->
       </span>
       <span class="working_info">
         <strong class="inconsolata-contact-info">Working At: </strong>
@@ -351,13 +361,21 @@
     </section>
     <section class="row row_content kalam-regular border_bottom">
       <span>
-        <div class="sub_title">Skills:</div>
-        <ul>
+        <div class="sub_title">EDUCATION:</div>
+        <ul class="list-style-none">
+          <li><small>Master of Computer Applications (MCA), JKC College, Guntur – <strong>Acharya Nagarjuna University</strong>, 2014.</small></li>
+        </ul>
+      </span>
+    </section>
+    <section class="row row_content kalam-regular border_bottom">
+      <span>
+        <div class="sub_title">SKILLS:</div>
+        <ul class="list-style">
           <li><small>Java, Java EE(Servlet,JSP, JSTL and JPA).</small></li>
           <li><small>Spring/SpringBoot Framework <b>(MVC, REST, JDBC, JPA, AOP, Batch and Security).</b></small></li>
           <li><small>Spring Cloud and Microservices, Hashicorp/Consul, Hashicorp/Vault <b>(Eureka Discovery Server/Client, Configuration, Ribbon, Hystrix, Feign and Zuul).</b></small></li>
           <li><small>Prometheus, Grafana, wmi exporter and ELK and EFK.</small></li>
-	  <li><small>JDBC, Spring JDBC, Spring Data JPA and Hibernate(Native/JPA)</small></li>
+	  <li><small>JDBC, Spring JDBC, Spring Data JPA and Hibernate (Native/JPA).</small></li>
           <li><small>JavaScript, ES6, Node Js, Express Js, React Js, Redux, Next Js, 11ty, Nunjucks and JQuery.</small></li>
           <li><small>Bootstrap, Material UI, tailwind UI and StyledComponents.</small></li>
           <li><small>Amazon Web Services <b> (Lambda, API Gateway, Cognito, Kinesis, Glue, Athena, CloudWatch, EC2, IAM, S3, RDS and Elastic Beanstalk).</b></small></li>
@@ -372,31 +390,31 @@
 
     <section class="row row_content kalam-regular border_bottom">
       <span>
-        <div class="sub_title">Experience:</div>
-        <ul>
+        <div class="sub_title">EXPERIENCE:</div>
+        <ul class="list-style">
           <li><small>ValueLabs, Hyderabad, from 3-May-2022 to till current date.</small></li>
-          <ul style="list-style-type:none;">
+          <ul class="list-style-none">
             <li>
               <h5><i>- As a System Analyst</i></h5>
             </li>
           </ul>
 
           <li><small>Yash Technologies, Hyderabad, from 14-Aug-2020 to 3-May-2022.</small></li>
-          <ul style="list-style-type:none;">
+          <ul class="list-style-none">
             <li>
               <h5><i>- As a Module Lead</i></h5>
             </li>
           </ul>
 
           <li><small>Neviton Softech Pvt ltd, Bangalore, from 10-July-2017 to 6-Aug-2020.</small></li>
-          <ul style="list-style-type:none;">
+          <ul class="list-style-none">
             <li>
               <h5><i>- As a Senior Software Engineer</i></h5>
             </li>
           </ul>
 
           <li><small>Sun KPO IT & Engineering Services, Hyderabad, from 15-Oct-2015 to 10-July-2017.</small></li>
-          <ul style="list-style-type:none;">
+          <ul class="list-style-none">
             <li class="kalam-light">
               <h5><i>- As a Software Engineer</i></h5>
             </li>
@@ -405,14 +423,7 @@
       </span>
     </section>
 
-    <section class="row row_content kalam-regular border_bottom">
-      <span>
-        <div class="sub_title">Eduction:</div>
-        <ul>
-          <li><small>Master of Computer Applications from JKC College, Guntur (<strong>Acharya Nagarjuna University</strong>) in 2014.</small></li>
-        </ul>
-      </span>
-    </section>
+    
     <button id="downloadBtn">Print</button>
   </main>
 
