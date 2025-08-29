@@ -39,22 +39,30 @@
   <link href="./fontawesome-free-5.10.2-web/css/solid.css" rel="stylesheet">
   <title>RamaMohanaRao.M | Fullstack Dev</title>
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5KGJZ4KK');</script>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5KGJZ4KK');</script>
   <!-- End Google Tag Manager -->
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-R4J2V3669D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-R4J2V3669D');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4J2V3669D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-R4J2V3669D');
+  </script>
   <style>
+    ::selection {
+      background: #a1a2a3dd;
+      text-shadow: none;
+    }
+
     :root {
       --body--background: #f5f5f5;
       --paper-background: #eee;
@@ -81,7 +89,7 @@
     }
 
     .hidden {
-      opacity:0;
+      opacity: 0;
     }
 
     .inconsolata-contact-info {
@@ -119,11 +127,11 @@
       display: grid;
       justify-content: center;
       place-items: center;
-      padding:20px;
+      padding: 20px;
       box-shadow: 0 1px 4px rgba(0, 0, 0, .3),
-			            -23px 0 20px -23px rgba(0, 0, 0, .8),
-			            23px 0 20px -23px rgba(0, 0, 0, .8),
-			            inset 0 0 40px rgba(0, 0, 0, .1);
+        -23px 0 20px -23px rgba(0, 0, 0, .8),
+        23px 0 20px -23px rgba(0, 0, 0, .8),
+        inset 0 0 40px rgba(0, 0, 0, .1);
       width: 80vw;
       max-width: 700px;
       box-sizing: content-box;
@@ -211,7 +219,7 @@
     #downloadBtn {
       margin-top: 20px;
       padding: 5px 10px 5px 10px;
-      border-radius: 5px;      
+      border-radius: 5px;
       border: 1px solid gray;
 
       &:hover {
@@ -223,12 +231,14 @@
     }
 
     .hide-in-pdf {
-        display: none !important; /* Hide the element in PDF */
-     }
+      display: none !important;
+      /* Hide the element in PDF */
+    }
 
     .pdf-view {
-        margin-top: 0 !important; /* Reset top margin for PDF */
-     }
+      margin-top: 0 !important;
+      /* Reset top margin for PDF */
+    }
 
     /*  mobile view styles */
     @media only screen and (max-width: 767px) {
@@ -281,14 +291,14 @@
         position: -ms-sticky;
         position: -o-sticky;
         position: -moz-sticky;
-        top:0;
+        top: 0;
       }
-      
+
       .sticky_row.bgcolor {
-        background-color:var(--body-background);
+        background-color: var(--body-background);
         box-shadow: 0px 2px 3px 3px rgba(0, 0, 0, .3);
         box-sizing: content-box;
-        padding-left:20px;
+        padding-left: 20px;
         padding-right: 20px;
         transition: box-shadow 0.3s;
       }
@@ -302,7 +312,8 @@
       <!-- <img src="https://ram222mohan.com/assets/profile.jpg" /> -->
     </div>
     <section class="row border_bottom sticky_row">
-      <div class="title kalam-regular"><span id="console-text"></span><span class='console-underscore' id='console'>&#95;</span></div>
+      <div class="title kalam-regular"><span id="console-text"></span><span class='console-underscore'
+          id='console'>&#95;</span></div>
       <div class="contact_info inconsolata-contact-info">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#5f6368">
@@ -330,6 +341,11 @@
         <cite title="github/RamMohan222">
           <a href="https://github.com/RamMohan222" target="_blank">
             <i class="fab fa-github"></i>
+          </a>
+        </cite>
+        <cite title="linktr.ee/RamMohan222">
+          <a href="https://linktr.ee/RamMohan222" target="_blank">
+            <i class="fas fa-link"></i>
           </a>
         </cite>
         <!--
@@ -373,11 +389,11 @@
       <span>
         <div class="sub_title">SKILLS:</div>
         <ul class="list-style">
-          <li><small>Java, Java EE(Servlet,JSP, JSTL and JPA).</small></li>
+          <li><small>Java, Java EE(Servlet, JSP, JSTL and JPA).</small></li>
           <li><small>Spring/SpringBoot Framework <b>(MVC, REST, JDBC, JPA, AOP, Batch and Security).</b></small></li>
           <li><small>Spring Cloud and Microservices, Hashicorp/Consul, Hashicorp/Vault <b>(Eureka Discovery Server/Client, Configuration, Ribbon, Hystrix, Feign and Zuul).</b></small></li>
           <li><small>Prometheus, Grafana, wmi exporter and ELK and EFK.</small></li>
-	  <li><small>JDBC, Spring JDBC, Spring Data JPA and Hibernate (Native/JPA).</small></li>
+          <li><small>JDBC, Spring JDBC, Spring Data JPA and Hibernate (Native/JPA).</small></li>
           <li><small>JavaScript, ES6, Node Js, Express Js, React Js, Redux, Next Js, 11ty, Nunjucks and JQuery.</small></li>
           <li><small>Bootstrap, Material UI, tailwind UI and StyledComponents.</small></li>
           <li><small>Amazon Web Services <b> (Lambda, API Gateway, Cognito, Kinesis, Glue, Athena, CloudWatch, EC2, IAM, S3, RDS and Elastic Beanstalk).</b></small></li>
@@ -425,7 +441,6 @@
       </span>
     </section>
 
-    
     <button id="downloadBtn">Print</button>
   </main>
 
@@ -437,17 +452,17 @@
 
   <script>
     function getExp() {
-        var totalMonths = Math.round(moment().diff(moment('2015-10-15', 'YYYY-MM-DD'), 'months', true));
-        var years = Math.floor(totalMonths / 12);
-        var months = Math.round(totalMonths % 12);
-        return { years, months }
+      var totalMonths = Math.round(moment().diff(moment('2015-10-15', 'YYYY-MM-DD'), 'months', true));
+      var years = Math.floor(totalMonths / 12);
+      var months = Math.round(totalMonths % 12);
+      return { years, months }
     }
 
     $(document).ready(function () {
       var exp = getExp();
       console.log(exp);
       $('#exp').text("Total Exp: " + exp.years + "." + exp.months + " Years");
-      consoleText(['RamaMohanaRao. M', 'RamMohan. M', 'Ram. M'], 'console-text',['#333']);
+      consoleText(['RamaMohanaRao. M', 'RamMohan. M', 'Ram. M'], 'console-text', ['#333']);
     });
 
     function consoleText(words, id, colors) {
@@ -459,12 +474,12 @@
       var waiting = false;
       var target = document.getElementById(id)
       target.setAttribute('style', 'color:' + colors[0])
-      window.setInterval(function() {
+      window.setInterval(function () {
 
         if (letterCount === 0 && waiting === false) {
           waiting = true;
           target.innerHTML = words[0].substring(0, letterCount)
-          window.setTimeout(function() {
+          window.setTimeout(function () {
             var usedColor = colors.shift();
             colors.push(usedColor);
             var usedWord = words.shift();
@@ -476,7 +491,7 @@
           }, 1000)
         } else if (letterCount === words[0].length + 1 && waiting === false) {
           waiting = true;
-          window.setTimeout(function() {
+          window.setTimeout(function () {
             x = -1;
             letterCount += x;
             waiting = false;
@@ -486,7 +501,7 @@
           letterCount += x;
         }
       }, 120)
-      window.setInterval(function() {
+      window.setInterval(function () {
         if (visible === true) {
           con.className = 'console-underscore hidden'
           visible = false;
@@ -500,46 +515,47 @@
 
 
 
-    document.addEventListener("DOMContentLoaded", function() {
-        var stickyElement = document.querySelector('.sticky_row');
+    document.addEventListener("DOMContentLoaded", function () {
+      var stickyElement = document.querySelector('.sticky_row');
 
-        window.addEventListener('scroll', function() {
-            var rect = stickyElement.getBoundingClientRect();
-            if (rect.top <= 0) {
-                stickyElement.classList.add('bgcolor');
-            } else {
-                stickyElement.classList.remove('bgcolor');
-            }
-        });
+      window.addEventListener('scroll', function () {
+        var rect = stickyElement.getBoundingClientRect();
+        if (rect.top <= 0) {
+          stickyElement.classList.add('bgcolor');
+        } else {
+          stickyElement.classList.remove('bgcolor');
+        }
+      });
     });
 
-    $('#downloadBtn').click(function() {
-        // Get the content to convert to PDF
-        var element = document.getElementsByClassName('container')[0];
-        var exp = getExp();
-        // Set the options for the PDF
-        var opt = {
-            margin:       0.5,
-            filename:     'RamaMohanaRao.M_Exp'+exp.years+'.'+exp.months+'_Fullstack_Java_React.pdf',
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-        };
-        
-        $('.image_wrapper').addClass('hide-in-pdf').addClass('.pdf-view');
-        $('#downloadBtn').css({ 'display': 'none' });
-        $('.sticky_row').css({ 'background-color': 'transparent' });
-        $('#console-text').text('Rama Mohana Rao. Molabanti');
-        
-        // Generate the PDF
-        html2pdf().from(element).set(opt).save().then(function() {
-          $('.image_wrapper').removeClass('hide-in-pdf').removeClass('.pdf-view');
-          $('#downloadBtn').css({ 'display': 'initial' });
-          $('.sticky_row').css({ 'background-color': 'var(--body-background)' });
-        });
+    $('#downloadBtn').click(function () {
+      // Get the content to convert to PDF
+      var element = document.getElementsByClassName('container')[0];
+      var exp = getExp();
+      // Set the options for the PDF
+      var opt = {
+        margin: 0.5,
+        filename: 'RamaMohanaRao.M_Exp' + exp.years + '.' + exp.months + '_Fullstack_Java_React.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+
+      $('.image_wrapper').addClass('hide-in-pdf').addClass('.pdf-view');
+      $('#downloadBtn').css({ 'display': 'none' });
+      $('.sticky_row').css({ 'background-color': 'transparent' });
+      $('#console-text').text('Rama Mohana Rao. Molabanti');
+
+      // Generate the PDF
+      html2pdf().from(element).set(opt).save().then(function () {
+        $('.image_wrapper').removeClass('hide-in-pdf').removeClass('.pdf-view');
+        $('#downloadBtn').css({ 'display': 'initial' });
+        $('.sticky_row').css({ 'background-color': 'var(--body-background)' });
+      });
     });
   </script>
-  <link href="https://cdn.jsdelivr.net/gh/RamMohan222/web-widget-metrics-info@v1.0.8/output/index.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/gh/RamMohan222/web-widget-metrics-info@v1.0.8/output/index.css"
+    rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/gh/RamMohan222/web-widget-metrics-info@v1.0.8/output/index.js"></script>
 </body>
 
