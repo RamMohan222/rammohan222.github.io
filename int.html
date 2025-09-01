@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+  <title>Interest Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f9f9f9;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      background: #eef6ff;
+    }
+    .section-title {
+      margin-top: 25px;
+      padding: 8px;
+      background: #f0f0f0;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Interest Calculator</h2>
+
+    <div class="section-title">Manual Entry (Months + Days)</div>
+    <label for="amount">Total Amount (₹)</label>
+    <input type="number" id="amount" placeholder="Enter total amount">
+
+    <label for="interestPer100">Interest per ₹100</label>
+    <input type="number" id="interestPer100" placeholder="Enter interest for ₹100">
+
+    <label for="months">Number of Months</label>
+    <input type="number" id="months" placeholder="Enter number of months">
+
+    <label for="days">Additional Days/Month</label>
+    <select id="days">
+      <option value="28">28</option>
+      <option value="29">29</option>
+      <option value="30" selected>30</option>
+      <option value="31">31</option>
+    </select>
+
+    <label for="extraDays">Additional Days</label>
+    <input type="number" id="extraDays" placeholder="Enter extra days">
+
+    <button onclick="calculateInterest()">Calculate</button>
+
+    <div class="section-title">Auto Entry (Start Date → End Date)</div>
+    <label for="startDate">Start Date</label>
+    <input type="date" id="startDate">
+
+    <label for="endDate">End Date</label>
+    <input type="date" id="endDate">
+
+    <button onclick="calculateFromDates()">Calculate Using Dates</button>
+
+    <div id="summary" class="result" style="display:none;"></div>
+  </div>
+
+  <script>
+    function calculateInterest(amount, interestPer100, months, daysInMonth, extraDays) {
+      // If called manually, fetch values from fields
+      if (arguments.length === 0) {
+        amount = parseFloat(document.getElementById("amount").value);
+        interestPer100 = parseFloat(document.getElementById("interestPer100").value);
+        months = parseInt(document.getElementById("months").value);
+        daysInMonth = parseInt(document.getElementById("days").value);
+        extraDays = parseInt(document.getElementById("extraDays").value) || 0;
+      }
+
+      if (isNaN(amount) || isNaN(interestPer100) || isNaN(months) || isNaN(daysInMonth)) {
+        alert("Please fill all fields with valid numbers.");
+        return;
+      }
+
+      const monthlyInterestRate = (interestPer100 / 100);
+      const monthlyInterest = amount * monthlyInterestRate;
+      const totalInterestForMonths = monthlyInterest * months;
+      const dailyInterest = monthlyInterest / daysInMonth;
+      const totalExtraDaysInterest = dailyInterest * extraDays;
+
+      const finalTotalInterest = totalInterestForMonths + totalExtraDaysInterest;
+      const finalTotalAmount = amount + finalTotalInterest;
+
+      const summary = `
+        <h3>Summary</h3>
+        <p><strong>Total Amount:</strong> ₹${amount.toFixed(2)}</p>
+        <p><strong>Interest per ₹100:</strong> ₹${interestPer100.toFixed(2)}</p>
+        <p><strong>Monthly Interest:</strong> ₹${monthlyInterest.toFixed(2)}</p>
+        <p><strong>Total Interest for ${months} months:</strong> ₹${totalInterestForMonths.toFixed(2)}</p>
+        <p><strong>Interest for additional ${extraDays} day(s):</strong> ₹${totalExtraDaysInterest.toFixed(2)}</p>
+        <hr>
+        <p><strong>Final Total Interest:</strong> ₹${finalTotalInterest.toFixed(2)}</p>
+        <p><strong>Total (Amount + Interest):</strong> ₹${finalTotalAmount.toFixed(2)}</p>
+      `;
+
+      document.getElementById("summary").innerHTML = summary;
+      document.getElementById("summary").style.display = "block";
+    }
+
+    function calculateFromDates() {
+      const startDate = new Date(document.getElementById("startDate").value);
+      const endDate = new Date(document.getElementById("endDate").value);
+
+      if (!startDate || !endDate || isNaN(startDate) || isNaN(endDate)) {
+        alert("Please select valid start and end dates.");
+        return;
+      }
+      if (endDate < startDate) {
+        alert("End date must be after start date.");
+        return;
+      }
+
+      // Calculate months and extra days
+      let months = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth());
+      let extraDays = endDate.getDate() - startDate.getDate();
+
+      if (extraDays < 0) {
+        months -= 1;
+        const prevMonth = new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate();
+        extraDays += prevMonth;
+      }
+
+      // Get current month days from end date
+      const daysInMonth = new Date(endDate.getFullYear(), endDate.getMonth() + 1, 0).getDate();
+
+      // Call main calculator with extracted months & days
+      const amount = parseFloat(document.getElementById("amount").value);
+      const interestPer100 = parseFloat(document.getElementById("interestPer100").value);
+
+      calculateInterest(amount, interestPer100, months, daysInMonth, extraDays);
+    }
+  </script>
+</body>
+</html>
