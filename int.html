@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <title>Interest Calculator</title>
   <style>
     body {
@@ -14,27 +16,32 @@
       margin: 40px;
       background: #f9f9f9;
     }
+
     .container {
       max-width: 600px;
       margin: auto;
       padding: 20px;
       background: #fff;
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+
     label {
       display: block;
       margin: 10px 0 5px;
       font-weight: bold;
     }
-    input, select {
+
+    input,
+    select {
       width: 100%;
       padding: 8px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 6px;
     }
-    button {
+
+    .button {
       width: 100%;
       padding: 10px;
       background: #007bff;
@@ -44,15 +51,18 @@
       cursor: pointer;
       font-size: 16px;
     }
-    button:hover {
+
+    .button:hover {
       background: #0056b3;
     }
+
     .result {
       margin-top: 20px;
       padding: 15px;
       border-radius: 8px;
       background: #eef6ff;
     }
+
     .section-title {
       margin-top: 25px;
       padding: 8px;
@@ -62,6 +72,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h2>Interest Calculator</h2>
@@ -87,7 +98,7 @@
     <label for="extraDays">Additional Days</label>
     <input type="number" id="extraDays" placeholder="Enter extra days">
 
-    <button onclick="calculateInterest()">Calculate</button>
+    <button class="button" onclick="calculateInterest()">Calculate</button>
 
     <div class="section-title">Auto Entry (Start Date → End Date)</div>
     <label for="startDate">Start Date</label>
@@ -96,9 +107,15 @@
     <label for="endDate">End Date</label>
     <input type="date" id="endDate">
 
-    <button onclick="calculateFromDates()">Calculate Using Dates</button>
+    <button class="button" onclick="calculateFromDates()">Calculate Using Dates</button>
 
     <div id="summary" class="result" style="display:none;"></div>
+    <button id="downloadBtn" class="icon-btn" title="Download">
+      <i class="fa-solid fa-download"></i>
+    </button>
+    <button id="shareBtn" class="icon-btn" title="Share">
+      <i class="fa-solid fa-share-nodes"></i>
+    </button>
   </div>
 
   <script>
@@ -175,5 +192,41 @@
       calculateInterest(amount, interestPer100, months, daysInMonth, extraDays);
     }
   </script>
+  <script>
+    document.getElementById("downloadBtn").addEventListener("click", function () {
+      const captureElement = document.getElementById("summary");
+
+      html2canvas(captureElement).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "summary.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      }).catch(err => {
+        console.error("Error capturing div:", err);
+      });
+    });
+
+    document.getElementById("shareBtn").addEventListener("click", function () {
+      const captureElement = document.getElementById("summary");
+
+      html2canvas(captureElement).then(canvas => {
+        canvas.toBlob(blob => {
+          const file = new File([blob], "summary.png", { type: "image/png" });
+          if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            navigator.share({
+              files: [file],
+              title: "Summary Image",
+              text: "Summary of interest calculation."
+            }).catch(err => console.error("Share failed:", err));
+          } else {
+            alert("Web Share API with files is not supported in this browser.");
+          }
+        }, "image/png");
+      }).catch(err => {
+        console.error("Error capturing div:", err);
+      });
+    });
+  </script>
 </body>
+
 </html>
