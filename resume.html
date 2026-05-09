@@ -234,15 +234,16 @@
   </ul>
 </div>
 
-<a href="pdf/RamaMohanaRao M Java ReactJS 10+.pdf" download><button id="downloadBtn">Print</button></a>
+<a href="pdf/RamaMohanaRao.M Fullstack Java ReactJS 10+.pdf"><button id="downloadBtn">Print</button></a>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 <script>
+  /* https://ekoopmans.github.io/html2pdf.js/ */
   document.getElementById('downloadBtn_stop').addEventListener('click', function () {
     const element = document.body;
     document.getElementById('downloadBtn').style.display = 'none'; // Hide the button before generating PDF
     const opt = {
       margin: 0,
-      filename: 'RamaMohanaRao M Java ReactJS 10+.pdf',
+      filename: 'RamaMohanaRao.M Fullstack Java ReactJS 10+.pdf',
       image: { type: 'jpeg', quality: 1 },
       html2canvas: { scale: 3 },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
