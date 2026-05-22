@@ -87,11 +87,16 @@
     margin-bottom: 3px;
   }
 
+   .button-container {
+      text-decoration: none !important;
+    }
    #downloadBtn {
-      margin-top: 20px;
       padding: 5px 10px 5px 10px;
       border-radius: 5px;
       border: 1px solid gray;
+      color: #333;
+      display: block;  /* Changes button from inline to block */
+      margin: 0 auto;  /* Top/bottom margins are 0, left/right margins are auto */
 
       &:hover {
         border: 1px solid #333;
@@ -106,6 +111,7 @@
     .hidden-on-mobile {
       display: block !important;
     }
+    
     @media screen and (max-width: 768px) {
       body {
         padding: 20px 15px;
@@ -116,11 +122,12 @@
       .hidden-on-mobile {
         display: none !important;
       }
-       .section-title {
+      .section-title {
         font-size: 10pt;
         padding-bottom: 1px;
         margin: 12px 0 5px;
         text-align: center;
+      }
     }
 </style>
 </head>
@@ -264,7 +271,9 @@
   </ul>
 </div>
 
-<a href="pdf/RamaMohanaRao.M Fullstack Java ReactJS 10+.pdf" download="RamaMohanaRao.M Fullstack Java ReactJS 10+.pdf"><button id="downloadBtn">Print</button></a>
+<a class="button-container" href="pdf/RamaMohanaRao.M Fullstack Java ReactJS 10+.pdf" download="RamaMohanaRao.M Fullstack Java ReactJS 10+.pdf">
+  <button id="downloadBtn">Print</button>
+</a>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 <script>
   /* https://ekoopmans.github.io/html2pdf.js/ */
