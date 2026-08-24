@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel with Themes and Random Colors</title>
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --container-bg: #ffffff;
+            --text-color: #333333;
+            --btn-bg: #ffffff;
+            --btn-border: #ccc;
+            --btn-hover: #e4e6eb;
+            --btn-hover-border: #adafb4;
+            --mode-bg: #ffffff;
+            --mode-color: #555;
+            --mode-active-bg: #007bff;
+            --mode-active-color: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --container-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --btn-bg: #2d2d2d;
+            --btn-border: #444;
+            --btn-hover: #3d3d3d;
+            --btn-hover-border: #555;
+            --mode-bg: #1e1e1e;
+            --mode-color: #aaa;
+            --mode-active-bg: #0d6efd;
+            --mode-active-color: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Top Controls Container */
+        .top-controls {
+            position: absolute;
+            top: 30px;
+            width: 90%;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .theme-btn {
+            background-color: var(--btn-bg);
+            border: 2px solid var(--btn-border);
+            color: var(--text-color);
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: all 0.2s ease;
+        }
+
+        .theme-btn:hover {
+            background-color: var(--btn-hover);
+            border-color: var(--btn-hover-border);
+            transform: scale(1.03);
+        }
+
+        .mode-container {
+            display: flex;
+            gap: 8px;
+            background: var(--mode-bg);
+            padding: 6px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: background-color 0.3s ease;
+        }
+
+        .mode-btn {
+            background-color: transparent;
+            border: none;
+            padding: 6px 14px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--mode-color);
+            transition: all 0.2s ease;
+        }
+
+        .mode-btn.active {
+            background-color: var(--mode-active-bg);
+            color: var(--mode-active-color);
+            box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            background-color: var(--btn-bg);
+            border: 2px solid var(--btn-border);
+            color: var(--text-color);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .btn:hover {
+            background-color: var(--btn-hover);
+            border-color: var(--btn-hover-border);
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .display-box {
+            background-color: var(--container-bg);
+            padding: 20px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 250px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #itemDisplay {
+            font-size: 45vh;
+            font-weight: bold;
+            line-height: 1;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+
+        .reset-container {
+            position: absolute;
+            bottom: 30px;
+        }
+
+        .reset-btn {
+            background-color: var(--mode-active-bg);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .reset-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .reset-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- Top Controls: Theme Button & Mode Selector -->
+    <div class="top-controls">
+        <button class="theme-btn" id="themeBtn">🌙 Dark Theme</button>
+        
+        <div class="mode-container">
+            <button class="mode-btn active" data-mode="uppercase">A-Z</button>
+            <button class="mode-btn" data-mode="lowercase">a-z</button>
+            <button class="mode-btn" data-mode="numbers">0-9</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Left Button -->
+        <button class="btn" id="prevBtn" title="Previous">&#10094;</button>
+        
+        <!-- Display Box -->
+        <div class="display-box">
+            <span id="itemDisplay">A</span>
+        </div>
+
+        <!-- Right Button -->
+        <button class="btn" id="nextBtn" title="Next">&#10095;</button>
+    </div>
+
+    <!-- Bottom Center Reset Colors Button -->
+    <div class="reset-container">
+        <button class="reset-btn" id="resetBtn">Reset Colors</button>
+    </div>
+
+    <script>
+        const sets = {
+            uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
+            lowercase: "abcdefghijklmnopqrstuvwxyz".split(""),
+            numbers: "0123456789".split("")
+        };
+
+        let currentMode = "uppercase";
+        let currentIndex = 0;
+
+        const itemDisplay = document.getElementById("itemDisplay");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const modeBtns = document.querySelectorAll(".mode-btn");
+        const themeBtn = document.getElementById("themeBtn");
+        const bodyEl = document.body;
+
+        function getRandomColor() {
+            const letters = "0123456789ABCDEF";
+            let color = "#";
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function updateDisplay() {
+            const currentSet = sets[currentMode];
+            itemDisplay.textContent = currentSet[currentIndex];
+            itemDisplay.style.color = getRandomColor();
+        }
+
+        nextBtn.addEventListener("click", () => {
+            const currentSet = sets[currentMode];
+            currentIndex = (currentIndex + 1) % currentSet.length;
+            updateDisplay();
+        });
+
+        prevBtn.addEventListener("click", () => {
+            const currentSet = sets[currentMode];
+            currentIndex = (currentIndex - 1 + currentSet.length) % currentSet.length;
+            updateDisplay();
+        });
+
+        resetBtn.addEventListener("click", () => {
+            itemDisplay.style.color = getRandomColor();
+        });
+
+        // Mode Switching Logic
+        modeBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                modeBtns.forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                
+                currentMode = btn.getAttribute("data-mode");
+                currentIndex = 0; 
+                updateDisplay();
+            });
+        });
+
+        // Theme Switching Logic
+        themeBtn.addEventListener("click", () => {
+            const currentTheme = bodyEl.getAttribute("data-theme");
+            if (currentTheme === "light") {
+                bodyEl.setAttribute("data-theme", "dark");
+                themeBtn.textContent = "☀️ Light Theme";
+            } else {
+                bodyEl.setAttribute("data-theme", "light");
+                themeBtn.textContent = "🌙 Dark Theme";
+            }
+        });
+
+        // Initial call
+        updateDisplay();
+    </script>
+
+</body>
+</html>
