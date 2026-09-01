@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RamaMohanaRao.M | Fullstack Dev Java, NodeJs, ReactJs, NextJs, AWS">
+    <meta name="apple-mobile-web-app-title" content="RamaMohanaRao.M | Fullstack Dev">
+    <meta name="application-name" content="RamaMohanaRao.M | Fullstack Dev">
+    <!--noindex: attribute instructs the search engines not to index any given page. -->
+    <!--nofollow: attribute instructs not to follow any links on that page. -->
+    <meta name="robots" content="noindex,nofollow">
+
+    <meta property="og:site_name" content="RamaMohanaRao.M | Fullstack Dev">
+    <meta property="og:title" content="RamaMohanaRao.M | FullStack Dev Java, NodeJs, ReactJs, NextJs, AWS" />
+    <meta property="og:url" content="https://www.ram222mohan.com" />
+    <meta property="og:description"
+        content="Fullstack developer with around 10+ years of exp with Java, SpringBoot, Spring Cloud, Microservice, NodeJs, ReactJs, NextJs and AWS" />
+    <meta property="og:image" content="https://ram222mohan.com/assets/profile.jpg" />
+
+    <link rel="canonical" href="https://www.ram222mohan.com" />
+    <link rel="alternate" hreflang="x-default" href="https://www.ram222mohan.com/index.html">
+    <link rel="alternate" hreflang="en" href="https://www.ram222mohan.com/index.html">
+    <link rel='shortcut icon' href='./assets/profile.jpg' type='image/x-icon' />
+    <link href="./assets/prism.css" rel="stylesheet" />
+    <title>DSA Problems</title>
+      <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5KGJZ4KK');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4J2V3669D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R4J2V3669D');
+    </script>
+    <style>
+        /* Add your CSS code here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        pre {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Problems</h1>
+        <h3>1. Using Streams, return the highest-paid employee in each department:</h3>
+        <pre><code class="language-java">
+    Map<String, Employee> result = employees.stream()
+        .collect(Collectors.groupingBy(
+            Employee::getDepartment,
+            Collectors.collectingAndThen(
+                Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary)),
+                Optional::get
+            )));
+    // Or
+    Map<String, Optional<Employee>> result = employees.stream()
+        .collect(Collectors.groupingBy(
+            Employee::getDepartment,
+            Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary))
+        ));
+        </code></pre>
+        <h2>Code Snippet</h2>
+        <pre><code class="language-javascript">
+        // Add your JavaScript code here
+        function greet(name) {
+            return `Hello, ${name}!`;
+        }
+        </code></pre>
+        <h2>Another Code Snippet</h2>
+        <pre><code class="language-python">
+        # Add your Python code here
+        def greet(name):
+            return f"Hello, {name}!"
+        </code></pre>
+    </div>
+    <script src="./assets/prism.js"></script>
+</body>
+
+</html>

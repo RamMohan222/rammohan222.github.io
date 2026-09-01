@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RamaMohanaRao.M | Fullstack Dev Java, NodeJs, ReactJs, NextJs, AWS">
+    <meta name="apple-mobile-web-app-title" content="RamaMohanaRao.M | Fullstack Dev">
+    <meta name="application-name" content="RamaMohanaRao.M | Fullstack Dev">
+    <!--noindex: attribute instructs the search engines not to index any given page. -->
+    <!--nofollow: attribute instructs not to follow any links on that page. -->
+    <meta name="robots" content="noindex,nofollow">
+
+    <meta property="og:site_name" content="RamaMohanaRao.M | Fullstack Dev">
+    <meta property="og:title" content="RamaMohanaRao.M | FullStack Dev Java, NodeJs, ReactJs, NextJs, AWS" />
+    <meta property="og:url" content="https://www.ram222mohan.com" />
+    <meta property="og:description"
+        content="Fullstack developer with around 10+ years of exp with Java, SpringBoot, Spring Cloud, Microservice, NodeJs, ReactJs, NextJs and AWS" />
+    <meta property="og:image" content="https://ram222mohan.com/assets/profile.jpg" />
+
+    <link rel="canonical" href="https://www.ram222mohan.com" />
+    <link rel="alternate" hreflang="x-default" href="https://www.ram222mohan.com/index.html">
+    <link rel="alternate" hreflang="en" href="https://www.ram222mohan.com/index.html">
+    <link rel='shortcut icon' href='./assets/profile.jpg' type='image/x-icon' />
+    <link href="./assets/prism.css" rel="stylesheet" />
+    <title>DSA Problems</title>
+      <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5KGJZ4KK');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4J2V3669D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-R4J2V3669D');
+    </script>
+    <style>
+        /* Add your CSS code here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        pre {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Problems</h1>
+        <h3>189. Rotate Array:</h3>
+        <pre><code class="language-java">
+        class Solution {
+            public void rotate(int[] nums, int k) {
+                int n = nums.length;
+                k = k % n; // Handle cases where k is greater than n
+                reverse(nums, 0, n - 1);
+                reverse(nums, 0, k - 1);
+                reverse(nums, k, n - 1);
+            }
+
+            private void reverse(int[] nums, int start, int end) {
+                while (start < end) {
+                    int temp = nums[start];
+                    nums[start] = nums[end];
+                    nums[end] = temp;
+                    start++;
+                    end--;
+                }
+            }
+        }
+        </code></pre>
+        <h3>53. Maximum Subarray:</h3>
+        <pre><code class="language-java">
+        class Solution {
+            public int maxSubArray(int[] nums) {
+                int max = nums[0];
+                int current = nums[0];
+                for (int i = 1; i < nums.length; i++) {
+                    current = Math.max(nums[i], current + nums[i]);
+                    max = Math.max(max, current);
+                }
+                return max;
+            }
+        }
+        </code></pre>
+        <h3>121. Best Time to Buy and Sell Stock:</h3>
+        <pre><code class="language-java">
+        class Solution {
+            public int maxProfit(int[] prices) {
+                int minPrice = Integer.MAX_VALUE;
+                int maxProfit = 0;
+                for (int price : prices) {
+                    minPrice = Math.min(minPrice, price);
+                    maxProfit = Math.max(maxProfit, price - minPrice);
+                }
+                return maxProfit;
+            }
+        }
+        </code></pre>
+        <h2>2461. Maximum Subarray Sum of size k</h2>
+        <pre><code class="language-java">
+        class Solution {
+            public static Integer maxSumSubarray(int[] arr, int k) {
+                if (arr == null || arr.length < k || k <= 0) {
+                    return null; // Invalid input or array too small
+                }
+
+                // Compute the sum of the first window of size k
+                int currentSum = 0;
+                for (int i = 0; i < k; i++) {
+                    currentSum += arr[i];
+                }
+
+                int maxSum = currentSum;
+
+                // Slide the window over the rest of the array
+                for (int i = k; i < arr.length; i++) {
+                    currentSum = currentSum + arr[i] - arr[i - k];
+                    maxSum = Math.max(maxSum, currentSum);
+                }
+
+                return maxSum;
+            }
+
+            public static void main(String[] args) {
+                int[] arr = {1, 4, 2, 10, 23, 3, 1, 0, 20};
+                int k = 4;
+                
+                // Output will be 39 (Subarray:)
+                System.out.println("Maximum subarray sum: " + maxSumSubarray(arr, k)); 
+            }
+        }
+
+        </code></pre>
+        <h2>Code Snippet</h2>
+        <pre><code class="language-javascript">
+        // Add your JavaScript code here
+        function greet(name) {
+            return `Hello, ${name}!`;
+        }
+        </code></pre>
+        <h2>Another Code Snippet</h2>
+        <pre><code class="language-python">
+        # Add your Python code here
+        def greet(name):
+            return f"Hello, {name}!"
+        </code></pre>
+    </div>
+    <script src="./assets/prism.js"></script>
+</body>
+
+</html>
